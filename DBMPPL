@@ -63,8 +63,8 @@ DROP TABLE IF EXISTS `peta`;
 CREATE TABLE IF NOT EXISTS `peta` (
   `id_peta` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nama_sekolah` varchar(50) NOT NULL,
-  `lat` float NOT NULL,
-  `long` float NOT NULL,
+  `latitude` float NOT NULL,
+  `longitude` float NOT NULL,
   PRIMARY KEY (`id_peta`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `sekolah` (
   `nama_sekolah` varchar(50) NOT NULL,
   `kepala_sekolah` varchar(50) NOT NULL,
   `akreditasi` varchar(50) NOT NULL,
-  `alamat_sekolah` varchar(50) NOT NULL,
+  `alamat_sekolah` varchar(250) NOT NULL,
   `status` int(11) NOT NULL,
   `jenjang` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
