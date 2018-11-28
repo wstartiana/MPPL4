@@ -14,6 +14,15 @@ $(document).ready(function(){
         type: ['school']
     };
 
+     // mebuat konten untuk info window
+     var contentString = '<a href="#"><h4>Nama Sekolah</h4><a>';
+
+     // membuat objek info window
+     var infowindow = new google.maps.InfoWindow({
+       content: contentString,
+       position: myLatlng
+     });
+
     //MARKER
     var marker = new google.maps.Marker({
         position: myLatlng,
@@ -21,6 +30,12 @@ $(document).ready(function(){
         title:"Hello World!"
     });
     
+ // event saat marker diklik
+ marker.addListener('click', function() {
+    // tampilkan info window di atas marker
+    infowindow.open(map, marker);
+  });
+
     service = new google.maps.places.PlacesService(map);
     service.nearbySearch(request, callback);
 
