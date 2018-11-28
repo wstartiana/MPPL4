@@ -15,4 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/peta', 'petaController@index');
+Route::get('/peta', 'petaController@index')->name('peta.index');
+Route::get('/awal', 'homeController@index');
+Route::get('/informasi', 'infoController@index');
