@@ -165,5 +165,5 @@
     });
 }
 </script> -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJfQgQL9MaM83aHUs5vxwi6O6JeVoU63Y&libraries=places&callback=initAutocomplete" async defer></script>
-<script src="{{ asset('js/script.js') }}"></script>
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJfQgQL9MaM83aHUs5vxwi6O6JeVoU63Y&libraries=places&callback=initAutocomplete" async defer></script>
+<script src="{{ asset('js/script.js') }}"></script> -->
