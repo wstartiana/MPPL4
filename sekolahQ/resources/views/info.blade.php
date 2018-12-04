@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Portfolio Item - Start Bootstrap Template</title>
+    <title>SekolahQ</title>
 
     <!-- Bootstrap core CSS -->
     <link href="tampilan3/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -52,62 +52,91 @@
     <div class="container">
 
       <!-- Portfolio Item Heading -->
-      <h1 class="my-4">Page Heading
-        <small>Secondary Text</small>
+      <h1 class="my-4">Nama Sekolah
+        <small><small>(Akreditas A/B)</small></small>
       </h1>
 
       <!-- Portfolio Item Row -->
       <div class="row">
 
-        <div class="col-md-8">
+        <div class="col-md-7">
           <img class="img-fluid" src="http://placehold.it/750x500" alt="">
         </div>
 
-        <div class="col-md-4">
-          <h3 class="my-3">Project Description</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
-          <h3 class="my-3">Project Details</h3>
+        <div class="col-md-5">
+          <div class="row">
+            <div class="col-4"><h6 class="my-3">Alamat</h6></div>
+            <div class="col-1">:</div>
+            <div class="col">Alamat sekolah alamat sekolah alamat sekolah alamat sekolah</div>
+
+            <div class="w-100"></div>
+            <div class="col-4"><h6 class="my-3">Telepon</h6></div>
+            <div class="col-1">:</div>
+            <div class="col">0251-8626187</div>
+
+            <div class="w-100"></div>
+            <div class="col-4"><h6 class="my-3">Email</h6></div>
+            <div class="col-1">:</div>
+            <div class="col">mue@huehuehue</div>
+
+            <div class="w-100"></div>
+            <div class="col-4"><h6 class="my-3">Kurikulum</h6></div>
+            <div class="col-1">:</div>
+            <div class="col">KTSP/2013</div>
+
+            <div class="w-100"></div>
+            <div class="col-4"><h6 class="my-3">Kepala Sekolah</h6></div>
+            <div class="col-1">:</div>
+            <div class="col">Bapak acep ucup ocep</div>
+
+            <div class="w-100"></div>
+            <div class="col-4"><h6 class="my-3">Total Siswa</h6></div>
+            <div class="col-1">:</div>
+            <div class="col">300 Siswa</div>
+          </div>
+
+          <!-- <h3 class="my-3">Project Details</h3>
           <ul>
             <li>Lorem Ipsum</li>
             <li>Dolor Sit Amet</li>
             <li>Consectetur</li>
             <li>Adipiscing Elit</li>
-          </ul>
+          </ul> -->
         </div>
 
       </div>
       <!-- /.row -->
 
       <!-- Related Projects Row -->
-      <h3 class="my-4">Related Projects</h3>
+      <h3 class="my-4">Informasi Lainnya</h3>
 
       <div class="row">
 
-        <div class="col-md-3 col-sm-6 mb-4">
-          <a href="#">
-            <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-          </a>
-        </div>
+<div class="col-md-3 col-sm-6 mb-4">
+  <a href="#">
+    <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+  </a>
+</div>
 
-        <div class="col-md-3 col-sm-6 mb-4">
-          <a href="#">
-            <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-          </a>
-        </div>
+<div class="col-md-3 col-sm-6 mb-4">
+  <a href="#">
+    <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+  </a>
+</div>
 
-        <div class="col-md-3 col-sm-6 mb-4">
-          <a href="#">
-            <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-          </a>
-        </div>
+<div class="col-md-3 col-sm-6 mb-4">
+  <a href="#">
+    <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+  </a>
+</div>
 
-        <div class="col-md-3 col-sm-6 mb-4">
-          <a href="#">
-            <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-          </a>
-        </div>
+<div class="col-md-3 col-sm-6 mb-4">
+  <a href="#">
+    <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+  </a>
+</div>
 
-      </div>
+</div>
       <!-- /.row -->
 
     </div>
