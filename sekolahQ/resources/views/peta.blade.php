@@ -46,7 +46,7 @@
         circle = new google.maps.Circle({
 			map: map,
 			center: myLatlng,
-			radius: 1000,
+			radius: 4000,
 			strokeColor: '#07A8BD',
 			strokeOpacity: 0.8,
 			strokeWeight: 2,
@@ -133,7 +133,7 @@
         circle = new google.maps.Circle({
 			map: map,
 			center: posisi,
-			radius: 1000,
+			radius: 4000,
 			strokeColor: '#07A8BD',
 			strokeOpacity: 0.8,
 			strokeWeight: 2,
@@ -148,10 +148,16 @@
         var myLatlng = [];
         var panjang = result_parsed['sekolah'].length;
         for (var i=0; i<panjang ; i++){
+            var lat_local = result_parsed['sekolah'][i]['latitude'];
+            var lng_local = result_parsed['sekolah'][i]['longitude'];
             // console.log(result_parsed['sekolah'][i]);
-            
-            myLatlng.push({lat: result_parsed['sekolah'][i]['latitude'], lng: result_parsed['sekolah'][i]['longitude']});
-            myS.push(result_parsed['sekolah'][i]['nama_sekolah']);
+            console.log(getDistanceFromLatLonInKm(lat_local, lng_local));
+
+            if (getDistanceFromLatLonInKm(lat_local, lng_local)<4.0 ){
+                console.log("MASUK");
+                myLatlng.push({lat: lat_local, lng: lng_local});
+                myS.push(result_parsed['sekolah'][i]['nama_sekolah']);
+            }
         }
         
 
@@ -174,6 +180,26 @@
         }
         http.send(params);
     }
+
+    function getDistanceFromLatLonInKm(lat2,lon2) {
+        var lat1 = globalLatlng.lat();
+        var lon1 = globalLatlng.lng();
+        var R = 6371; // Radius of the earth in km
+        var dLat = deg2rad(lat2-lat1);  // deg2rad below
+        var dLon = deg2rad(lon2-lon1); 
+        var a = 
+            Math.sin(dLat/2) * Math.sin(dLat/2) +
+            Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+            Math.sin(dLon/2) * Math.sin(dLon/2)
+            ; 
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+        var d = R * c; // Distance in km
+        return d;
+    }
+    function deg2rad(deg) {
+        return deg * (Math.PI/180)
+    }
+//  console.log(getDistanceFromLatLonInKm(-6.552260, 106.718840, -6.560010, 106.767470) );
     
 
 </script>
