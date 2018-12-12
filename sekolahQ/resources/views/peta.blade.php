@@ -90,7 +90,7 @@
         // membuat objek info window
         var infowindow = new google.maps.InfoWindow();
 
-        for (var i=0; i<10; i++){
+        for (var i=0; i<banyak; i++){
             // mebuat konten untuk info window
             var contentString = '<a href="#"><h4>Nama Sekolah</h4><a>';
             //MARKER
@@ -144,15 +144,16 @@
         
         var result_parsed = JSON.parse(result); 
 
+        var myS = [];
         var myLatlng = [];
-        for (var i=0; i<result_parsed['sekolah'].length; i++){
-            console.log(result_parsed['sekolah'][i]);
+        var panjang = result_parsed['sekolah'].length;
+        for (var i=0; i<panjang ; i++){
+            // console.log(result_parsed['sekolah'][i]);
+            
+            myLatlng.push({lat: result_parsed['sekolah'][i]['latitude'], lng: result_parsed['sekolah'][i]['longitude']});
+            myS.push(result_parsed['sekolah'][i]['nama_sekolah']);
         }
-        var myS = [
-            "blabla",
-            "ccc"
-
-        ];
+        
 
         makeMarker(myLatlng, myS);
         
@@ -161,7 +162,7 @@
     function getXML(){
         var http = new XMLHttpRequest();
         var url = '/tampilpeta';
-        // var params = 'location=ipsum&radius=binny';
+        // var params = 'location=ipsum&radius=binny&jenis_sekolah';
         var params = '';
         http.open('GET', url, true);
 
