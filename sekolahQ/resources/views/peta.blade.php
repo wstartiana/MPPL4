@@ -6,7 +6,9 @@
 <script>
     var map;
     var homeIcon = 'https://maps.gstatic.com/mapfiles/ms2/micons/red-pushpin.png';
-    
+    var marker = [];
+    var myLatlng ;
+    var circle;
     geolocationInit();
     
     function geolocationInit(){
@@ -51,6 +53,18 @@
 			fillOpacity: 0.1,
 			clickable: false
 		});        
+        
+        //nambahin listener buat action di map nya
+				google.maps.event.addListener(map, 'click', function (event) {
+					// markers.forEach(function(marker) {
+					// 	marker.setMap(null);
+					// });
+					// markers = [];
+                    mapNul();
+					myLatlng = event.latLng;
+                    console.log(myLatlng.lat());
+					// runQuery();
+				});
 
         var myLatlng = [
             @foreach ($result as $data)
@@ -70,7 +84,6 @@
         var banyak = myLatlng.length;
         // console.log(myLatlng.length);
         // console.log(typeof(myLatLng));
-        var marker = [];
         
         // membuat objek info window
         var infowindow = new google.maps.InfoWindow();
@@ -98,65 +111,73 @@
         }
     }
 
-    function nearbySearch(){
-        var request = {
-            location: {lat: -6.554364, lng: 106.723409},
-            radius: '1500',
-            type: ['school']
-        };
-
-        service = new google.maps.places.PlacesService(map);
-        service.nearbySearch(request, callback);
+    function mapNul(){
+        var banyak = marker.length;
+        for (var i=0; i<banyak; i++){
+            marker[i].setMap(null);
+        }
+        circle.setMap(null);
+        marker = [];
     }
+    // function nearbySearch(){
+    //     var request = {
+    //         location: {lat: -6.554364, lng: 106.723409},
+    //         radius: '1500',
+    //         type: ['school']
+    //     };
 
-    function callback(results, status) {
-            console.log(results);
-            // if (status == google.maps.places.PlacesServiceStatus.OK) {
-            //   for (var i = 0; i < results.length; i++) {
-            //     var place = results[i];
-            //     createMarker(results[i]);
-            //   }
-            // }
-    }
+    //     service = new google.maps.places.PlacesService(map);
+    //     service.nearbySearch(request, callback);
+    // }
 
-    function runQuery(){
-        directionsDisplay.setMap(null);
-		infoHere.close();
+    // function callback(results, status) {
+    //         console.log(results);
+    //         // if (status == google.maps.places.PlacesServiceStatus.OK) {
+    //         //   for (var i = 0; i < results.length; i++) {
+    //         //     var place = results[i];
+    //         //     createMarker(results[i]);
+    //         //   }
+    //         // }
+    // }
 
-        geocoder.geocode({'location': myLatlng}, function(results, status) {
-            if(status === 'OK'){
-                if(results[0]){
-                    map.setZoom(map.getZoom());
-                    var marker = new google.maps.Marker({
-							icon: homeIcon,
-							position: myLatlng,
-							map: map
-                    });
+    // function runQuery(){
+    //     directionsDisplay.setMap(null);
+	// 	infoHere.close();
 
-                    google.maps.event.addListener(marker,'click', (function(marker){
-								return function() {
-									directionsDisplay.setMap(null);
-									infoHere.close();
+    //     geocoder.geocode({'location': myLatlng}, function(results, status) {
+    //         if(status === 'OK'){
+    //             if(results[0]){
+    //                 map.setZoom(map.getZoom());
+    //                 var marker = new google.maps.Marker({
+	// 						icon: homeIcon,
+	// 						position: myLatlng,
+	// 						map: map
+    //                 });
 
-									nearby.forEach(function(marker) {
-										marker.setMap(null);
-									});
-									nearby.forEach(function(marker) {
-										marker.setMap(map);
-									});
-								};
-					})(marker));
+    //                 google.maps.event.addListener(marker,'click', (function(marker){
+	// 							return function() {
+	// 								directionsDisplay.setMap(null);
+	// 								infoHere.close();
+
+	// 								nearby.forEach(function(marker) {
+	// 									marker.setMap(null);
+	// 								});
+	// 								nearby.forEach(function(marker) {
+	// 									marker.setMap(map);
+	// 								});
+	// 							};
+	// 				})(marker));
                     
-                    markers.push(marker);
+    //                 markers.push(marker);
 
                     
 
 
                         
-                }
-            }
-        }
-    }
+    //             }
+    //         }
+    //     }
+    // }
         
 
 </script>
