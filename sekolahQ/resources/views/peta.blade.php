@@ -7,8 +7,9 @@
     var map;
     var homeIcon = 'https://maps.gstatic.com/mapfiles/ms2/micons/red-pushpin.png';
     var marker = [];
-    var myLatlng ;
+    var globalLatlng ;
     var circle;
+    var markerPin;
     geolocationInit();
     
     function geolocationInit(){
@@ -37,7 +38,7 @@
             zoom: 13,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         });
-        var marker = new google.maps.Marker({
+        markerPin = new google.maps.Marker({
 							icon: homeIcon,
 							position: myLatlng,
 							map: map
@@ -61,8 +62,9 @@
 					// });
 					// markers = [];
                     mapNul();
-					myLatlng = event.latLng;
-                    console.log(myLatlng.lat());
+					globalLatlng = event.latLng;
+                    console.log(globalLatlng.lat());
+                    getXML();
 					// runQuery();
 				});
 
@@ -117,68 +119,61 @@
             marker[i].setMap(null);
         }
         circle.setMap(null);
+        markerPin.setMap(null);
         marker = [];
     }
-    // function nearbySearch(){
-    //     var request = {
-    //         location: {lat: -6.554364, lng: 106.723409},
-    //         radius: '1500',
-    //         type: ['school']
-    //     };
 
-    //     service = new google.maps.places.PlacesService(map);
-    //     service.nearbySearch(request, callback);
-    // }
-
-    // function callback(results, status) {
-    //         console.log(results);
-    //         // if (status == google.maps.places.PlacesServiceStatus.OK) {
-    //         //   for (var i = 0; i < results.length; i++) {
-    //         //     var place = results[i];
-    //         //     createMarker(results[i]);
-    //         //   }
-    //         // }
-    // }
-
-    // function runQuery(){
-    //     directionsDisplay.setMap(null);
-	// 	infoHere.close();
-
-    //     geocoder.geocode({'location': myLatlng}, function(results, status) {
-    //         if(status === 'OK'){
-    //             if(results[0]){
-    //                 map.setZoom(map.getZoom());
-    //                 var marker = new google.maps.Marker({
-	// 						icon: homeIcon,
-	// 						position: myLatlng,
-	// 						map: map
-    //                 });
-
-    //                 google.maps.event.addListener(marker,'click', (function(marker){
-	// 							return function() {
-	// 								directionsDisplay.setMap(null);
-	// 								infoHere.close();
-
-	// 								nearby.forEach(function(marker) {
-	// 									marker.setMap(null);
-	// 								});
-	// 								nearby.forEach(function(marker) {
-	// 									marker.setMap(map);
-	// 								});
-	// 							};
-	// 				})(marker));
-                    
-    //                 markers.push(marker);
-
-                    
-
-
-                        
-    //             }
-    //         }
-    //     }
-    // }
+    function callPin(result){
+        var posisi = new google.maps.LatLng(globalLatlng.lat(), globalLatlng.lng());
+        markerPin = new google.maps.Marker({
+							icon: homeIcon,
+							position: posisi,
+							map: map
+                        });
+        circle = new google.maps.Circle({
+			map: map,
+			center: posisi,
+			radius: 1000,
+			strokeColor: '#07A8BD',
+			strokeOpacity: 0.8,
+			strokeWeight: 2,
+			fillColor: '#07A8BD',
+			fillOpacity: 0.1,
+			clickable: false
+		});        
         
+        var result_parsed = JSON.parse(result); 
+
+        var myLatlng = [];
+        for (var i=0; i<result_parsed['sekolah'].length; i++){
+            console.log(result_parsed['sekolah'][i]);
+        }
+        var myS = [
+            "blabla",
+            "ccc"
+
+        ];
+
+        makeMarker(myLatlng, myS);
+        
+    }
+
+    function getXML(){
+        var http = new XMLHttpRequest();
+        var url = '/tampilpeta';
+        // var params = 'location=ipsum&radius=binny';
+        var params = '';
+        http.open('GET', url, true);
+
+        http.onreadystatechange = function() {//Call a function when the state changes.
+            if(http.readyState == 4 && http.status == 200) {
+                // console.log(http.responseText);
+                callPin( http.responseText ); 
+            }
+        }
+        http.send(params);
+    }
+    
 
 </script>
 @endsection
