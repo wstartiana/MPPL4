@@ -17,4 +17,4 @@ Route::get('/', function () {
 
 Route::get('/peta', 'petaController@index');
 Route::get('/tampilpeta', 'petaController@tampilpeta');
-Route::get('/filterr', 'homeController@index');
+Route::get('/tampilanAwal', 'homeController@index');

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Peta;
+use App\Sekolah;
+
 
 class HomeController extends Controller
 {
