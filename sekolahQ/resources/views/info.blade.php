@@ -52,6 +52,8 @@
 
         <div class="col-md-7">
           <img width="300" class="img-fluid" src="https://2.bp.blogspot.com/-DOIsRcSUX5E/VxuPo9iYEyI/AAAAAAAAW_Q/x6_cRKiKG80gOIQ6-3rLFtTcaGyTiYXEwCLcB/s1600/Logo%2BOSIS%2BSD.png" alt="">
+          <!-- <img width="300" class="img-fluid" src="https://upload.wikimedia.org/wikipedia/id/2/23/LOGO_OSIS_SMP.png" alt="">
+          <img width="300" class="img-fluid" src="https://upload.wikimedia.org/wikipedia/id/e/ef/LOGO_OSIS_SMA.png" alt=""> -->
         </div>
 
         <div class="col-md-5">
