@@ -17,5 +17,5 @@ Route::get('/', function () {
 
 Route::get('/peta', 'petaController@index');
 Route::get('/tampilpeta', 'petaController@tampilpeta');
-Route::get('/tampilanAwal', 'homeController@index');
+Route::get('/tampilanAwal', 'homeController@index') -> name('peta.index');
 Route::get('/info', 'infoController@index');
