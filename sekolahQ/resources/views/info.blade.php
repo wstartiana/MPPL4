@@ -34,15 +34,6 @@
                 <span class="sr-only">(current)</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Services</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
-            </li>
           </ul>
         </div>
       </div>
@@ -80,6 +71,16 @@
             <div class="col">mue@huehuehue</div>
 
             <div class="w-100"></div>
+            <div class="col-4"><h6 class="my-3">Jenjang</h6></div>
+            <div class="col-1">:</div>
+            <div class="col">Sekolah Menengah Pertama</div>
+
+            <div class="w-100"></div>
+            <div class="col-4"><h6 class="my-3">Status</h6></div>
+            <div class="col-1">:</div>
+            <div class="col">Negeri</div>
+
+            <div class="w-100"></div>
             <div class="col-4"><h6 class="my-3">Kurikulum</h6></div>
             <div class="col-1">:</div>
             <div class="col">KTSP/2013</div>
@@ -108,7 +109,7 @@
       <!-- /.row -->
 
       <!-- Related Projects Row -->
-      <h3 class="my-4">Informasi Lainnya</h3>
+      <!-- <h3 class="my-4">Informasi Lainnya</h3>
 
       <div class="row">
 
@@ -134,7 +135,7 @@
   <a href="#">
     <img class="img-fluid" src="http://placehold.it/500x300" alt="">
   </a>
-</div>
+</div> -->
 
 </div>
       <!-- /.row -->
