@@ -1,6 +1,7 @@
 @extends('templates.master')
 
 @section('content')
+<input id="pac-input" style="width: 300px; height: 40px" type="text" placeholder="Search Box">
 <div id="map" style="width: 1500px; height: 500px"></div></align> 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJfQgQL9MaM83aHUs5vxwi6O6JeVoU63Y&libraries=places&callback=initAutocomplete" async defer></script>
 <script>
@@ -66,7 +67,49 @@
                     console.log(globalLatlng.lat());
                     getXML();
 					// runQuery();
+                });
+                
+        // Create the search box and link it to the UI element.
+        var input = document.getElementById('pac-input');
+        var searchBox = new google.maps.places.SearchBox(input);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+        
+        //nambahin listener buat action di map nya
+				google.maps.event.addListener(map, 'click', function (event) {
+					// markers.forEach(function(marker) {
+					// 	marker.setMap(null);
+					// });
+					// markers = [];
+                    mapNul();
+					globalLatlng = event.latLng;
+                    console.log(globalLatlng.lat());
+                    getXML();
+					// runQuery();
+                });
+        // Bias the SearchBox results towards current map's viewport.
+        map.addListener('bounds_changed', function() {
+          searchBox.setBounds(map.getBounds());
+        });
+
+        searchBox.addListener('places_changed', function() {
+				var places = searchBox.getPlaces();
+				if (places.length == 0) {
+					return;
+				}
+
+				var bounds = new google.maps.LatLngBounds();
+				places.forEach(function(place) {
+                    markerPin = new google.maps.Marker({
+							icon: homeIcon,
+							position: place.geometry.location,
+							map: map
+                        });
+							(place.geometry.viewport)?bounds.union(place.geometry.viewport):bounds.extend(place.geometry.location);
 				});
+				map.fitBounds(bounds);
+                        map.setZoom(15);
+			});
+
 
         var myLatlng = [
             @foreach ($result as $data)
@@ -78,13 +121,18 @@
                 "{{ $data->nama_sekolah}}",
             @endforeach
         ];
+        var myID = [
+            @foreach ($result as $data)
+                "{{ $data->id_peta}}",
+            @endforeach
+        ];
 
-        makeMarker(myLatlng, myS);
+        makeMarker(myLatlng, myS, myID);
     }
 
-    function makeMarker(myLatlng,myS){
+    function makeMarker(myLatlng,myS, myID){
         var banyak = myLatlng.length;
-        // console.log(myLatlng.length);
+        // console.log(myID[i]);
         // console.log(typeof(myLatLng));
         
         // membuat objek info window
@@ -92,6 +140,9 @@
 
         for (var i=0; i<banyak; i++){
             // mebuat konten untuk info window
+            var str = myS[i];
+            var result = str.link("{{ route('lihatSekolah', ":id")}}");
+            result = result.replace(':id', myID[i]);
             var contentString = '<a href="#"><h4>Nama Sekolah</h4><a>';
             //MARKER
             marker[i] = new google.maps.Marker({
@@ -102,7 +153,7 @@
             google.maps.event.addListener(marker[i], 'click', function(e){
                 // console.log(e);
                 infowindow.setPosition(e.latLng);
-                infowindow.setContent(contentString);
+                infowindow.setContent(result);
                 // infowindow.setOptions({
                 //     content: "makan",
                 //     position: marker[i].position
@@ -124,6 +175,7 @@
     }
 
     function callPin(result){
+        mapNul();
         var posisi = new google.maps.LatLng(globalLatlng.lat(), globalLatlng.lng());
         markerPin = new google.maps.Marker({
 							icon: homeIcon,
@@ -133,7 +185,8 @@
         circle = new google.maps.Circle({
 			map: map,
 			center: posisi,
-			radius: 4000,
+            radius: document.getElementsByName("radius")[0].value * 1000,
+            
 			strokeColor: '#07A8BD',
 			strokeOpacity: 0.8,
 			strokeWeight: 2,
@@ -141,40 +194,45 @@
 			fillOpacity: 0.1,
 			clickable: false
 		});        
-        
+        // console.log("panjang "+result.length);
         var result_parsed = JSON.parse(result); 
 
         var myS = [];
         var myLatlng = [];
+        var myID = [];
         var panjang = result_parsed['sekolah'].length;
         for (var i=0; i<panjang ; i++){
             var lat_local = result_parsed['sekolah'][i]['latitude'];
             var lng_local = result_parsed['sekolah'][i]['longitude'];
             // console.log(result_parsed['sekolah'][i]);
             console.log(getDistanceFromLatLonInKm(lat_local, lng_local));
-
-            if (getDistanceFromLatLonInKm(lat_local, lng_local)<4.0 ){
-                console.log("MASUK");
+            var radius= document.getElementsByName("radius")[0].value;
+            console.log(radius);
+            if (getDistanceFromLatLonInKm(lat_local, lng_local)<radius ){
+                // console.log("MASUK");
                 myLatlng.push({lat: lat_local, lng: lng_local});
                 myS.push(result_parsed['sekolah'][i]['nama_sekolah']);
             }
         }
         
 
-        makeMarker(myLatlng, myS);
+        makeMarker(myLatlng, myS, myID);
         
     }
 
     function getXML(){
         var http = new XMLHttpRequest();
-        var url = '/tampilpeta';
+        var url = '/sekolah/lihatSekolah';
         // var params = 'location=ipsum&radius=binny&jenis_sekolah';
-        var params = '';
-        http.open('GET', url, true);
+        // var form_data = document.getElementsByName("form1");
+        var form_data = document.forms.namedItem("form1");
+        var params = new FormData(form_data);
+        // params.append("jenjang","ayam");
+        http.open('POST', url, true);
 
         http.onreadystatechange = function() {//Call a function when the state changes.
             if(http.readyState == 4 && http.status == 200) {
-                // console.log(http.responseText);
+                console.log(http.responseText);
                 callPin( http.responseText ); 
             }
         }

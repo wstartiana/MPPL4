@@ -10,13 +10,16 @@ class PetaController extends Controller
 {
     public function index()
     {
-        $result = peta::all();
+        $result = sekolah::all();
         return view('peta', compact('result'));
         // return view('peta');
     }
 
     public function tampilpeta(){
-        $result = peta::all();
-        return view('tampilpeta', compact('result'));
+        $result = sekolah::all();
+        return response()->json([
+            'sekolah' => $result
+        ]);
+        // return view('tampilpeta', compact('result'));
     }
 }

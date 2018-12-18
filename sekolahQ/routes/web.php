@@ -16,6 +16,8 @@ Route::get('/', function () {
 });
 
 Route::get('/peta', 'petaController@index');
-Route::get('/tampilpeta', 'petaController@tampilpeta');
-Route::get('/tampilanAwal', 'homeController@index');
-Route::get('/info', 'infoController@index');
+Route::get('/tampilpeta', 'petaController@tampilpeta') -> name('tampilpeta');
+Route::get('/sekolah/{id}/lihatSekolah', 'SekolahController@lihatSekolah')->name('lihatSekolah');
+Route::post('/sekolah/lihatSekolah', 'SekolahController@cariSekolah') -> name('cariSekolah');
+Route::get('/info', 'SekolahController@infoSekolah');
+// Route::post('/tampilpeta', 'petaController@tampilpeta');
