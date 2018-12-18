@@ -123,7 +123,7 @@
         ];
         var myID = [
             @foreach ($result as $data)
-                "{{ $data->id_peta}}",
+                "{{ $data->id_sekolah}}",
             @endforeach
         ];
 
@@ -134,31 +134,33 @@
         var banyak = myLatlng.length;
         // console.log(myID[i]);
         // console.log(typeof(myLatLng));
-        
+        judul = [];
         // membuat objek info window
         var infowindow = new google.maps.InfoWindow();
 
         for (var i=0; i<banyak; i++){
             // mebuat konten untuk info window
-            var str = myS[i];
-            var result = str.link("{{ route('lihatSekolah', ":id")}}");
+            let str = myS[i];
+            // console.log(str);
+            let result = str.link("{{ route('lihatSekolah', ":id")}}");
             result = result.replace(':id', myID[i]);
-            var contentString = '<a href="#"><h4>Nama Sekolah</h4><a>';
+            // var contentString = '<a href="#"><h4>Nama Sekolah</h4><a>';
             //MARKER
             marker[i] = new google.maps.Marker({
                 position: myLatlng[i],
                 map: map,
                 title: myS[i]
             });
+            // console.log(result);
             google.maps.event.addListener(marker[i], 'click', function(e){
                 // console.log(e);
                 infowindow.setPosition(e.latLng);
-                infowindow.setContent(result);
-                // infowindow.setOptions({
-                //     content: "makan",
-                //     position: marker[i].position
+                // infowindow.setContent(result);
+                infowindow.setOptions({
+                    content: result,
+                    // position: marker[i].position
 
-                // });
+                });
                 infowindow.open(map,marker[i]);
             });
         }

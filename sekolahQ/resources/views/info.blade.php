@@ -11,14 +11,15 @@
     <title>SekolahQ</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="tampilan3/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('tampilan3/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="tampilan3/css/portfolio-item.css" rel="stylesheet">
+    <link href="{{ asset('tampilan3/css/portfolio-item.css') }}" rel="stylesheet">
 
   </head>
 
   <body>
+  @foreach ($result as $data)
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -30,7 +31,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home
+              <a class="nav-link" href="{{ route('lihatPeta')}}">Peta
                 <span class="sr-only">(current)</span>
               </a>
             </li>
@@ -43,8 +44,8 @@
     <div class="container">
 
       <!-- Portfolio Item Heading -->
-      <h1 class="my-4">Nama Sekolah
-        <small><small>(Akreditas A/B)</small></small>
+      <h1 class="my-4">{{ $data->nama_sekolah}}
+        <small><small>(Akreditas {{ $data->akreditasi}})</small></small>
       </h1>
 
       <!-- Portfolio Item Row -->
@@ -60,42 +61,42 @@
           <div class="row">
             <div class="col-4"><h6 class="my-3">Alamat</h6></div>
             <div class="col-1">:</div>
-            <div class="col">Alamat sekolah alamat sekolah alamat sekolah alamat sekolah</div>
+            <div class="col">{{ $data->alamat_sekolah}}</div>
 
             <div class="w-100"></div>
             <div class="col-4"><h6 class="my-3">Telepon</h6></div>
             <div class="col-1">:</div>
-            <div class="col">0251-8626187</div>
+            <div class="col">{{ $data->no_telp}}</div>
 
             <div class="w-100"></div>
             <div class="col-4"><h6 class="my-3">Email</h6></div>
             <div class="col-1">:</div>
-            <div class="col">mue@huehuehue</div>
+            <div class="col">{{ $data->email}}</div>
 
             <div class="w-100"></div>
             <div class="col-4"><h6 class="my-3">Jenjang</h6></div>
             <div class="col-1">:</div>
-            <div class="col">Sekolah Menengah Pertama</div>
+            <div class="col">{{ $data->jenjang}}</div>
 
             <div class="w-100"></div>
             <div class="col-4"><h6 class="my-3">Status</h6></div>
             <div class="col-1">:</div>
-            <div class="col">Negeri</div>
+            <div class="col">{{ $data->status}}</div>
 
             <div class="w-100"></div>
             <div class="col-4"><h6 class="my-3">Kurikulum</h6></div>
             <div class="col-1">:</div>
-            <div class="col">KTSP/2013</div>
+            <div class="col">{{ $data->kurikulum}}</div>
 
             <div class="w-100"></div>
             <div class="col-4"><h6 class="my-3">Kepala Sekolah</h6></div>
             <div class="col-1">:</div>
-            <div class="col">Bapak acep ucup ocep</div>
+            <div class="col">{{ $data->kepala_sekolah}}</div>
 
             <div class="w-100"></div>
             <div class="col-4"><h6 class="my-3">Total Siswa</h6></div>
             <div class="col-1">:</div>
-            <div class="col">300 Siswa</div>
+            <div class="col">{{ $data->total_siswa}} Siswa</div>
           </div>
 
           <!-- <h3 class="my-3">Project Details</h3>
@@ -144,6 +145,7 @@
 
     </div>
     <!-- /.container -->
+    @endforeach
 
     <!-- Footer -->
     <footer class="py-5 bg-dark">
@@ -154,8 +156,8 @@
     </footer>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="tampilan3/vendor/jquery/jquery.min.js"></script>
-    <script src="tampilan3/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('tampilan3/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('tampilan3/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
   </body>
 

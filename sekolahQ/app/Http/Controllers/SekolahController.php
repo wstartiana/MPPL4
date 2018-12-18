@@ -22,7 +22,8 @@ class SekolahController extends Controller
         ]);
     }
 
-    public function infoSekolah(){
-        return view('info');
+    public function infoSekolah($id){
+        $result = sekolah::where('id_sekolah',$id)->get();
+        return view('info', compact('result'));
     }
 }
