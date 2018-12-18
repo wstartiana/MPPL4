@@ -17,20 +17,41 @@
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">MAIN NAVIGATION</li>
-        <li class="active treeview">
-          <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-            <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+        <li class="header">
+        <ulclass="list-group"><li class="list-group-item list-group-item-info"><h5>Lokasi Saat Ini</h5></li>
+        <li class="list-group-item list-group-item-info">Jl. lalalala no segini, bogor, jawa barat</li></ul>
+        </li>
+            <li>
+            <div class="text-left row">
+            <div class="col-md-10 pull-left">
+            <label><input type="radio" name="optradio" checked><font color="white">SD</font></label>
+            <label><input type="radio" name="optradio" checked><font color="white">SMP</font></label>
+            <label><input type="radio" name="optradio" checked><font color="white">SMA</font></label>
+            <label><input type="radio" name="optradio" checked><font color="white">SMK</font></label>
+            </div>
+            </div>
+            </li>
+            <li>
+            <div class="text-left row">
+						<div class="col-md-11" style="margin-bottom:5px;">
+							<b><font color="white">Radius Pencarian</font></b>
+						</div>
+						<div class="col-md-1 pull-left">
+							&nbsp;
+						</div>
+						<div class="col-md-8 pull-left">
+            <div class="slidecontainer">
+              <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+            </div>
+						</div>
+						<div class="col-md-2 pull-left">
+							<p id="radnum" class="text-left">17Km</p>
+						</div>
+					</div>
+            </li>
           </ul>
         </li>
-        <li class="treeview">
+        <!-- <li class="treeview">
           <a href="#">
             <i class="fa fa-files-o"></i>
             <span>Layout Options</span>
@@ -44,7 +65,7 @@
             <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
             <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
           </ul>
-        </li>
+        </li> -->
         
       </ul>
     </section>
