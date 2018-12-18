@@ -20,4 +20,3 @@ Route::get('/tampilpeta', 'petaController@tampilpeta') -> name('tampilpeta');
 Route::get('/sekolah/{id}/lihatSekolah', 'SekolahController@lihatSekolah')->name('lihatSekolah');
 Route::post('/sekolah/lihatSekolah', 'SekolahController@cariSekolah') -> name('cariSekolah');
 Route::get('/info', 'SekolahController@infoSekolah');
-// Route::post('/tampilpeta', 'petaController@tampilpeta');
