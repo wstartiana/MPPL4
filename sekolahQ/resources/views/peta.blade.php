@@ -1,7 +1,8 @@
 @extends('templates.master')
 
 @section('content')
-<input id="pac-input" style="width: 300px; height: 40px" type="text" placeholder="Search Box">
+    <input id="pac-input" class="form-control form-control-lg" style="margin-top:10px;width: 300px; height: 40px" type="text" placeholder="Search Box">
+    
 <div id="map" style="width: 1500px; height: 600px"></div></align> 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJfQgQL9MaM83aHUs5vxwi6O6JeVoU63Y&libraries=places&callback=initAutocomplete" async defer></script>
 <script>

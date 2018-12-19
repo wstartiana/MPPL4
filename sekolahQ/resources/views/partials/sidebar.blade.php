@@ -17,11 +17,14 @@
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">
-          <ulclass="list-group"><li><font color="white"><h5>Filter Sekolah Berdasarkan:</font></h5></li>
-        </li>
+        <!-- <li class="header"> -->
+            <h3 style="color:white;padding-left:8px;padding-top:16px">Filter Berdasarkan:</h3>
+        
         <br>
-        <form name="form1" class="sidebar-form">
+
+        
+
+        <form name="form1" style="padding-left:16px">
           <li>
           <div class="text-left row">
             <div class="col-md-11" style="margin-bottom:5px;">
@@ -62,7 +65,7 @@
 						</div>
 						<div class="col-md-8 pull-left">
             <div class="slidecontainer">
-              <input type="range" name="radius" min="1" max="20" value="50" class="slider" id="myRange">
+              <input type="range" name="radius" min="1" max="20" value="10" class="slider" id="myRange">
             </div>
 						</div>
 						<div class="col-md-2 pull-left">
