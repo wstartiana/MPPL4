@@ -5,29 +5,30 @@
       <!-- Sidebar user panel -->
    
       <!-- search form -->
-      <form action="#" method="get" class="sidebar-form">
+      <!-- <form name="form1" class="sidebar-form">
         <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
+          <input type="text" name="jenjang" class="form-control" placeholder="Search...">
           <span class="input-group-btn">
                 <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
                 </button>
               </span>
         </div>
-      </form>
+      </form> -->
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">
-        <ulclass="list-group"><li class="list-group-item list-group-item-info"><h5>Lokasi Saat Ini</h5></li>
-        <li class="list-group-item list-group-item-info">Jl. lalalala no segini, bogor, jawa barat</li></ul>
+          <ulclass="list-group"><li class="list-group-item list-group-item-info"><h5>Lokasi Saat Ini</h5></li>
+          <li class="list-group-item list-group-item-info">Jl. lalalala no segini, bogor, jawa barat</li></ul>
         </li>
-            <li>
+        <form name="form1" class="sidebar-form">
+        <li>
             <div class="text-left row">
             <div class="col-md-10 pull-left">
-            <label><input type="radio" name="optradio" checked><font color="white">SD</font></label>
-            <label><input type="radio" name="optradio" checked><font color="white">SMP</font></label>
-            <label><input type="radio" name="optradio" checked><font color="white">SMA</font></label>
-            <label><input type="radio" name="optradio" checked><font color="white">SMK</font></label>
+              <label><input type="radio" name="optradio" value="SD" checked><font color="white">SD</font></label>
+              <label><input type="radio" name="optradio" value="SMP" checked><font color="white">SMP</font></label>
+              <label><input type="radio" name="optradio" value="SMA" checked><font color="white">SMA</font></label>
+              <!-- <label><input type="radio" name="optradio" value="SMK" checked><font color="white">SMK</font></label> -->
             </div>
             </div>
             </li>
@@ -41,7 +42,7 @@
 						</div>
 						<div class="col-md-8 pull-left">
             <div class="slidecontainer">
-              <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+              <input type="range" name="radius" min="1" max="20" value="50" class="slider" id="myRange">
             </div>
 						</div>
 						<div class="col-md-2 pull-left">
@@ -51,23 +52,10 @@
             </li>
           </ul>
         </li>
-        <!-- <li class="treeview">
-          <a href="#">
-            <i class="fa fa-files-o"></i>
-            <span>Layout Options</span>
-            <span class="pull-right-container">
-              <span class="label label-primary pull-right">4</span>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
-            <li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
-            <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
-            <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
-          </ul>
-        </li> -->
+</form>
         
       </ul>
     </section>
+    <input type="button" name="dsfd" value="cari" onclick="getXML()"  >
     <!-- /.sidebar -->
   </aside>
