@@ -18,21 +18,41 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">
-          <ulclass="list-group"><li class="list-group-item list-group-item-info"><h5>Lokasi Saat Ini</h5></li>
-          <li class="list-group-item list-group-item-info">Jl. lalalala no segini, bogor, jawa barat</li></ul>
+          <ulclass="list-group"><li><font color="white"><h5>Filter Sekolah Berdasarkan:</font></h5></li>
         </li>
+        <br>
         <form name="form1" class="sidebar-form">
-        <li>
-            <div class="text-left row">
+          <li>
+          <div class="text-left row">
+            <div class="col-md-11" style="margin-bottom:5px;">
+							<b><font color="white">Status Sekolah</font></b>
+						</div>
             <div class="col-md-10 pull-left">
-              <label><input type="radio" name="optradio" value="SD" checked><font color="white">SD</font></label>
-              <label><input type="radio" name="optradio" value="SMP" checked><font color="white">SMP</font></label>
-              <label><input type="radio" name="optradio" value="SMA" checked><font color="white">SMA</font></label>
-              <!-- <label><input type="radio" name="optradio" value="SMK" checked><font color="white">SMK</font></label> -->
-            </div>
-            </div>
-            </li>
-            <li>
+                <label><input type="radio" name="status" value="2" checked><font color="white">All</font></label>
+                <label><input type="radio" name="status" value="1"><font color="white">Negeri</font></label>
+                <label><input type="radio" name="status" value="0" ><font color="white">Swasta</font></label>
+                <!-- <label><input type="radio" name="optradio" value="SMK" checked><font color="white">SMK</font></label> -->
+              </div>
+              </div>
+          </li>
+          <br>
+          <br>
+          <li>
+              <div class="text-left row">
+              <div class="col-md-11" style="margin-bottom:5px;">
+							  <b><font color="white">Jenjang</font></b>
+						  </div>
+                <div class="col-md-10 pull-left">
+                  <label><input type="radio" name="optradio" value="SD" checked><font color="white">SD</font></label>
+                  <label><input type="radio" name="optradio" value="SMP" ><font color="white">SMP</font></label>
+                  <label><input type="radio" name="optradio" value="SMA" ><font color="white">SMA</font></label>
+                  <!-- <label><input type="radio" name="optradio" value="SMK" checked><font color="white">SMK</font></label> -->
+                </div>
+              </div>
+          </li>
+          <br>
+          <br>
+          <li>
             <div class="text-left row">
 						<div class="col-md-11" style="margin-bottom:5px;">
 							<b><font color="white">Radius Pencarian</font></b>
@@ -56,6 +76,6 @@
         
       </ul>
     </section>
-    <input type="button" name="dsfd" value="cari" onclick="getXML()"  >
+    <!-- <input type="button" name="dsfd" value="cari" onclick="getXML()"  > -->
     <!-- /.sidebar -->
   </aside>

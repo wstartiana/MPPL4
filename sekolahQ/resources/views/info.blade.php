@@ -52,9 +52,13 @@
       <div class="row">
 
         <div class="col-md-7">
+        @if ($data->jenjang === 'SD')
           <img width="300" class="img-fluid" src="https://2.bp.blogspot.com/-DOIsRcSUX5E/VxuPo9iYEyI/AAAAAAAAW_Q/x6_cRKiKG80gOIQ6-3rLFtTcaGyTiYXEwCLcB/s1600/Logo%2BOSIS%2BSD.png" alt="">
-          <!-- <img width="300" class="img-fluid" src="https://upload.wikimedia.org/wikipedia/id/2/23/LOGO_OSIS_SMP.png" alt="">
-          <img width="300" class="img-fluid" src="https://upload.wikimedia.org/wikipedia/id/e/ef/LOGO_OSIS_SMA.png" alt=""> -->
+        @elseif ($data->jenjang === 'SMP')
+        <img width="300" class="img-fluid" src="https://upload.wikimedia.org/wikipedia/id/2/23/LOGO_OSIS_SMP.png" alt="">
+        @else
+          <img width="300" class="img-fluid" src="https://upload.wikimedia.org/wikipedia/id/e/ef/LOGO_OSIS_SMA.png" alt="">
+        @endif        
         </div>
 
         <div class="col-md-5">
@@ -81,7 +85,12 @@
             <div class="w-100"></div>
             <div class="col-4"><h6 class="my-3">Status</h6></div>
             <div class="col-1">:</div>
-            <div class="col">{{ $data->status}}</div>
+            @if ($data->status === '1')
+              <div class="col">Negeri</div>
+            @else
+              <div class="col">Negeri</div>
+            @endif  
+
 
             <div class="w-100"></div>
             <div class="col-4"><h6 class="my-3">Kurikulum</h6></div>

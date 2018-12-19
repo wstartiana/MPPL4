@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Peta;
 use App\Sekolah;
+use Illuminate\Support\Facades\DB;
 
 class SekolahController extends Controller
 {
@@ -13,10 +14,25 @@ class SekolahController extends Controller
         return view('lihatSekolah', compact('result'));
       }
     
-    public function cariSekolah(){
+      public function cariSekolah(){
+        $status = request('status');
         $jenjang = request('optradio');
+        
         // echo $jenjang;
-        $result = sekolah::where('jenjang', $jenjang)->get();
+        if($status == 2){
+            $result = sekolah::where('jenjang', $jenjang)->get();
+        }
+        else{
+            // $result = sekolah::where('jenjang', $jenjang)->get();
+            $result = DB::table('sekolahs')
+                ->where('jenjang', '=', $jenjang)
+                ->where('status', '=', $status)
+                ->get();
+            
+        }
+
+        // echo "heol";
+        
         return response()->json([
             'sekolah' => $result
         ]);

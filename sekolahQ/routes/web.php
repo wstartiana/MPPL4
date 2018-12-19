@@ -15,8 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/peta', 'petaController@index');
+Route::get('/peta', 'petaController@index')->name('lihatPeta');
 Route::get('/tampilpeta', 'petaController@tampilpeta') -> name('tampilpeta');
-Route::get('/sekolah/{id}/lihatSekolah', 'SekolahController@lihatSekolah')->name('lihatSekolah');
 Route::post('/sekolah/lihatSekolah', 'SekolahController@cariSekolah') -> name('cariSekolah');
-Route::get('/info', 'SekolahController@infoSekolah');
+Route::get('/info/{id}', 'SekolahController@infoSekolah')->name('lihatSekolah');
+// Route::post('/tampilpeta', 'petaController@tampilpeta');

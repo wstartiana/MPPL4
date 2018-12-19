@@ -1,0 +1,511 @@
+<html><head><style type="text/css">.gm-style .gm-style-mtc label,.gm-style .gm-style-mtc div{font-weight:400}
+</style><style type="text/css">.gm-control-active img{box-sizing:content-box;pointer-events:none}.gm-control-active:hover img:nth-child(1),.gm-control-active:active img:nth-child(1),.gm-control-active:active img:nth-child(2){display:none}
+</style><link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Google+Sans"><style type="text/css">.gm-ui-hover-effect{opacity:.6}.gm-ui-hover-effect:hover{opacity:1}
+</style><style type="text/css">@media print {  .gm-style .gmnoprint, .gmnoprint {    display:none  }}@media screen {  .gm-style .gmnoscreen, .gmnoscreen {    display:none  }}</style><style type="text/css">.gm-style-pbc{transition:opacity ease-in-out;background-color:rgba(0,0,0,0.45);text-align:center}.gm-style-pbt{font-size:22px;color:white;font-family:Roboto,Arial,sans-serif;position:relative;margin:0;top:50%;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%)}
+</style><style type="text/css">.pac-container{background-color:#fff;position:absolute!important;z-index:1000;border-radius:2px;border-top:1px solid #d9d9d9;font-family:Arial,sans-serif;box-shadow:0 2px 6px rgba(0,0,0,0.3);-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;overflow:hidden}.pac-logo:after{content:"";padding:1px 1px 1px 0;height:18px;box-sizing:border-box;text-align:right;display:block;background-image:url(https://maps.gstatic.com/mapfiles/api-3/images/powered-by-google-on-white3.png);background-position:right;background-repeat:no-repeat;background-size:120px 14px}.hdpi.pac-logo:after{background-image:url(https://maps.gstatic.com/mapfiles/api-3/images/powered-by-google-on-white3_hdpi.png)}.pac-item{cursor:default;padding:0 4px;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;line-height:30px;text-align:left;border-top:1px solid #e6e6e6;font-size:11px;color:#999}.pac-item:hover{background-color:#fafafa}.pac-item-selected,.pac-item-selected:hover{background-color:#ebf2fe}.pac-matched{font-weight:700}.pac-item-query{font-size:13px;padding-right:3px;color:#000}.pac-icon{width:15px;height:20px;margin-right:7px;margin-top:6px;display:inline-block;vertical-align:top;background-image:url(https://maps.gstatic.com/mapfiles/api-3/images/autocomplete-icons.png);background-size:34px}.hdpi .pac-icon{background-image:url(https://maps.gstatic.com/mapfiles/api-3/images/autocomplete-icons_hdpi.png)}.pac-icon-search{background-position:-1px -1px}.pac-item-selected .pac-icon-search{background-position:-18px -1px}.pac-icon-marker{background-position:-1px -161px}.pac-item-selected .pac-icon-marker{background-position:-18px -161px}.pac-placeholder{color:gray}
+</style><style type="text/css">.gm-style .gm-style-cc span,.gm-style .gm-style-cc a,.gm-style .gm-style-mtc div{font-size:10px;box-sizing:border-box}
+</style><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+  <title>Sistem Informasi Pencarian Sekolah</title>  <!-- Bootstrap Core -->
+  <link rel="stylesheet" href="https://siplah.jaban.in/includes/bootstrap/css/bootstrap.min.css">
+  <!-- Custom -->
+  <link rel="stylesheet" href="https://siplah.jaban.in/includes/bootstrap/css/sb-admin.css">
+  <!-- Bootstrap Slider -->
+  <link rel="stylesheet" href="https://siplah.jaban.in/includes/bootstrap/css/bootstrap-slider.min.css">
+
+  <!-- Custom Fonts -->
+  <link rel="stylesheet" href="https://siplah.jaban.in/includes/font-awesome/css/font-awesome.min.css">
+
+  <!-- jQuery -->
+  <script type="text/javascript" src="https://siplah.jaban.in/includes/jquery/dist/jquery.min.js"></script>
+  <!-- Bootstrap Core -->
+  <script type="text/javascript" src="https://siplah.jaban.in/includes/bootstrap/js/bootstrap.min.js"></script>
+  <!-- Bootstrap Slider -->
+  <script type="text/javascript" src="https://siplah.jaban.in/includes/bootstrap/js/bootstrap-slider.min.js"></script>
+<style>
+	html, body{
+	  height: 100%;
+	  margin: 0;
+	  padding: 0;
+		overflow-y: hidden;
+	}
+	.controls {
+    margin-top: 10px;
+    border: 1px solid transparent;
+    border-radius: 2px 0 0 2px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    height: 32px;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  #pac-input {
+    background-color: #fff;
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 300;
+    margin-left: 12px;
+    padding: 0 11px 0 13px;
+    text-overflow: ellipsis;
+    width: 300px;
+  }
+
+  #pac-input:focus {
+    border-color: #4d90fe;
+  }
+
+  .pac-container {
+    font-family: Roboto;
+  }
+
+  #type-selector {
+    color: #fff;
+    background-color: #4d90fe;
+    padding: 5px 11px 0px 11px;
+  }
+
+  #type-selector label {
+    font-family: Roboto;
+    font-size: 13px;
+    font-weight: 300;
+  }
+  #target {
+    width: 345px;
+  }
+
+	#ex1Slider .slider-selection {
+		background: #838182;
+	}
+</style><script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/35/4/intl/id_ALL/common.js"></script><script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/35/4/intl/id_ALL/util.js"></script><script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/35/4/intl/id_ALL/map.js"></script><script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/35/4/intl/id_ALL/geometry.js"></script><script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/35/4/intl/id_ALL/poly.js"></script><script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/35/4/intl/id_ALL/geocoder.js"></script><script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/35/4/intl/id_ALL/controls.js"></script><script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/35/4/intl/id_ALL/places_impl.js"></script><script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/35/4/intl/id_ALL/infowindow.js"></script><style type="text/css">.gm-style {
+        font: 400 11px Roboto, Arial, sans-serif;
+        text-decoration: none;
+      }
+      .gm-style img { max-width: none; }</style><script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/35/4/intl/id_ALL/onion.js"></script><script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/35/4/intl/id_ALL/marker.js"></script><script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/35/4/intl/id_ALL/directions.js"></script></head>
+
+
+
+<body style="background:#5d5d5d;">
+	<div class="container-fluid" style="height:inherit;">
+		<div class="row" style="height:inherit;">
+
+			<div class="col-lg-3" style="height:inherit;">
+				<div class="nav navbar-nav side-nav">
+					<div class="text-left row">
+						<div class="col-md-11 pull-left text-center">
+							<img src="https://siplah.jaban.in/includes/images/logo.png" height="80px">
+						</div>
+					</div>
+
+					<hr>
+
+					<div class="text-left row">
+						<div class="col-md-1 pull-left">
+							<i class="fa fa-home"></i>
+						</div>
+						<div class="col-md-10">
+							<b id="alamatRumah"><b>Jalan Sampang</b></b>
+						</div>
+						<div class="col-md-11 pull-right">
+							<p id="alamatJalan">Jl. Sampang, Cigoong Sel., Cikulur, Kabupaten Lebak, Banten 42356</p>
+						</div>
+					</div>
+
+					<hr>
+
+					<div class="text-left row">
+						<div class="col-md-1 pull-left">
+							<i class="fa fa-graduation-cap"></i>
+						</div>
+						<div class="col-md-11">
+							<b>Jenjang</b>
+						</div>
+						<br>
+						<br>
+						<div class="col-md-1 pull-left">
+							&nbsp;
+						</div>
+						<div class="col-md-2 pull-left text-center">
+							<input type="radio" class="form-inline" name="jenjang" value="[SD,NEGERI,DASAR,SDN]" checked=""><br>SD
+						</div>
+						<div class="col-md-3 pull-left text-center">
+							<input type="radio" class="form-inline" name="jenjang" value="[SMP,NEGERI,SMPN]"><br>SMP
+						</div>
+						<div class="col-md-3 pull-left text-center">
+							<input type="radio" class="form-inline" name="jenjang" value="[SMA,NEGERI,SMAN]"><br>SMA
+						</div>
+						<div class="col-md-2 pull-left text-center">
+							<input type="radio" class="form-inline" name="jenjang" value="[SMK,NEGERI,SMKN]"><br>SMK
+						</div>
+					</div>
+
+					<hr>
+
+					<div class="text-left row">
+						<div class="col-md-1 pull-left">
+							<i class="fa fa-circle"></i>
+						</div>
+						<div class="col-md-11" style="margin-bottom:5px;">
+							<b>Radius Pencarian</b>
+						</div>
+						<div class="col-md-1 pull-left">
+							&nbsp;
+						</div>
+						<div class="col-md-8 pull-left">
+							<div class="slider slider-horizontal" id="ex1Slider"><div class="slider-track"><div class="slider-track-low" style="left: 0px; width: 0%;"></div><div class="slider-selection" style="left: 0%; width: 0%;"></div><div class="slider-track-high" style="right: 0px; width: 100%;"></div></div><div class="tooltip tooltip-main top" role="presentation" style="left: 0%;"><div class="tooltip-arrow"></div><div class="tooltip-inner">3 Km</div></div><div class="tooltip tooltip-min top" role="presentation" style="display: none;"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div><div class="tooltip tooltip-max top" role="presentation" style="display: none;"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div><div class="slider-handle min-slider-handle round" role="slider" aria-valuemin="3" aria-valuemax="30" aria-valuenow="3" aria-valuetext="3 Km" tabindex="0" style="left: 0%;"></div><div class="slider-handle max-slider-handle round hide" role="slider" aria-valuemin="3" aria-valuemax="30" aria-valuenow="3" aria-valuetext="3 Km" tabindex="0" style="left: 0%;"></div></div><input id="ex1" data-slider-id="ex1Slider" type="text" data-slider-min="3" data-slider-max="30" data-slider-step="1" data-slider-value="17" data-value="3" value="3" style="display: none;">
+						</div>
+						<div class="col-md-2 pull-left">
+							<p id="radNum" class="text-left">3Km</p>
+						</div>
+					</div>
+
+					<hr>
+
+					<div class="text-left row">
+						<div class="col-md-1 pull-left">
+							<i class="fa fa-check"></i>
+						</div>
+						<div class="col-md-11" style="margin-bottom:5px;">
+							<b>Rekomendasi</b>
+						</div>
+						<div class="col-md-1 pull-left">
+							&nbsp;
+						</div>
+						<div class="col-md-10 pull-left" style="overflow-y:auto; height:270px;">
+							<ul id="rekomendasi" class="nav navbar-nav"></ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+      <div class="col-lg-9" style="height:inherit;">
+				
+				<div id="myMap" style="height: 100%; margin-left: -1%; margin-right: -1%; position: relative; overflow: hidden;"><div style="height: 100%; width: 100%; position: absolute; top: 0px; left: 0px; background-color: rgb(229, 227, 223);"><div class="gm-style" style="position: absolute; z-index: 0; left: 0px; top: 0px; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px;"><div tabindex="0" style="position: absolute; z-index: 0; left: 0px; top: 0px; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; cursor: url(&quot;https://maps.gstatic.com/mapfiles/openhand_8_8.cur&quot;), default; touch-action: none;"><div style="z-index: 1; position: absolute; left: 50%; top: 50%; width: 100%; transform: translate(0px, 0px);"><div style="position: absolute; left: 0px; top: 0px; z-index: 100; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><div style="position: absolute; transform: matrix(1, 0, 0, 1, -114, -195); z-index: 986;"><div style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -256px; top: 0px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -256px; top: -256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 0px; top: -256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 256px; top: -256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 256px; top: 0px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 256px; top: 256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 0px; top: 256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -256px; top: 256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -512px; top: 256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -512px; top: 0px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -512px; top: -256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 512px; top: -256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 512px; top: 0px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 512px; top: 256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 256px; top: 512px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 0px; top: 512px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -256px; top: 512px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -512px; top: 512px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 512px; top: 512px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div></div></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 101; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: 30;"><div style="position: absolute; transform: matrix(1, 0, 0, 1, -114, -195); z-index: 986;"><div style="width: 256px; height: 256px; position: absolute; left: 0px; top: 0px;"><canvas width="256" height="256" draggable="false" style="width: 256px; height: 256px; user-select: none; position: absolute; left: 0px; top: 0px;"></canvas></div><div style="width: 256px; height: 256px; position: absolute; left: -256px; top: 0px;"><canvas width="256" height="256" draggable="false" style="width: 256px; height: 256px; user-select: none; position: absolute; left: 0px; top: 0px;"></canvas></div><div style="width: 256px; height: 256px; position: absolute; left: -256px; top: -256px;"><canvas width="256" height="256" draggable="false" style="width: 256px; height: 256px; user-select: none; position: absolute; left: 0px; top: 0px;"></canvas></div><div style="width: 256px; height: 256px; position: absolute; left: 0px; top: -256px;"><canvas width="256" height="256" draggable="false" style="width: 256px; height: 256px; user-select: none; position: absolute; left: 0px; top: 0px;"></canvas></div><div style="width: 256px; height: 256px; position: absolute; left: 256px; top: -256px;"><canvas width="256" height="256" draggable="false" style="width: 256px; height: 256px; user-select: none; position: absolute; left: 0px; top: 0px;"></canvas></div><div style="width: 256px; height: 256px; position: absolute; left: 256px; top: 0px;"><canvas width="256" height="256" draggable="false" style="width: 256px; height: 256px; user-select: none; position: absolute; left: 0px; top: 0px;"></canvas></div><div style="width: 256px; height: 256px; position: absolute; left: 256px; top: 256px;"><canvas width="256" height="256" draggable="false" style="width: 256px; height: 256px; user-select: none; position: absolute; left: 0px; top: 0px;"></canvas></div><div style="width: 256px; height: 256px; position: absolute; left: 0px; top: 256px;"><canvas width="256" height="256" draggable="false" style="width: 256px; height: 256px; user-select: none; position: absolute; left: 0px; top: 0px;"></canvas></div><div style="width: 256px; height: 256px; position: absolute; left: -256px; top: 256px;"><canvas width="256" height="256" draggable="false" style="width: 256px; height: 256px; user-select: none; position: absolute; left: 0px; top: 0px;"></canvas></div><div style="width: 256px; height: 256px; position: absolute; left: -512px; top: 256px;"></div><div style="width: 256px; height: 256px; position: absolute; left: -512px; top: 0px;"></div><div style="width: 256px; height: 256px; position: absolute; left: -512px; top: -256px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 512px; top: -256px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 512px; top: 0px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 512px; top: 256px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 256px; top: 512px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 0px; top: 512px;"></div><div style="width: 256px; height: 256px; position: absolute; left: -256px; top: 512px;"></div><div style="width: 256px; height: 256px; position: absolute; left: -512px; top: 512px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 512px; top: 512px;"></div></div></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 102; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 103; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: -1;"><div style="position: absolute; transform: matrix(1, 0, 0, 1, -114, -195); z-index: 986;"><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 0px; top: 0px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -256px; top: 0px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -256px; top: -256px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 0px; top: -256px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 256px; top: -256px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 256px; top: 0px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 256px; top: 256px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 0px; top: 256px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -256px; top: 256px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -512px; top: 256px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -512px; top: 0px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -512px; top: -256px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 512px; top: -256px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 512px; top: 0px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 512px; top: 256px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 256px; top: 512px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 0px; top: 512px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -256px; top: 512px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -512px; top: 512px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 512px; top: 512px;"></div></div></div><div style="width: 32px; height: 32px; overflow: hidden; position: absolute; left: -41px; top: -99px; z-index: -67;"><img alt="" src="https://maps.gstatic.com/mapfiles/ms2/micons/red-pushpin.png" draggable="false" style="position: absolute; left: 0px; top: 0px; user-select: none; width: 32px; height: 32px; border: 0px; padding: 0px; margin: 0px; max-width: none; opacity: 1;"></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><div style="position: absolute; transform: matrix(1, 0, 0, 1, -114, -195); z-index: 986;"><div style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;"><img draggable="false" alt="" role="presentation" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i13024!3i8483!4i256!2m3!1e0!2sm!3i446151790!3m9!2sid!3sID!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!4e0!23i1301875&amp;key=AIzaSyAG1wy8E-WZuD5kvCYMODyh9fZ2RConDkQ&amp;token=117506" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: -256px; top: 0px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;"><img draggable="false" alt="" role="presentation" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i13023!3i8483!4i256!2m3!1e0!2sm!3i446151790!3m9!2sid!3sID!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!4e0!23i1301875&amp;key=AIzaSyAG1wy8E-WZuD5kvCYMODyh9fZ2RConDkQ&amp;token=715" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: -256px; top: -256px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;"><img draggable="false" alt="" role="presentation" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i13023!3i8482!4i256!2m3!1e0!2sm!3i446151790!3m9!2sid!3sID!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!4e0!23i1301875&amp;key=AIzaSyAG1wy8E-WZuD5kvCYMODyh9fZ2RConDkQ&amp;token=29098" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 0px; top: -256px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;"><img draggable="false" alt="" role="presentation" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i13024!3i8482!4i256!2m3!1e0!2sm!3i446151790!3m9!2sid!3sID!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!4e0!23i1301875&amp;key=AIzaSyAG1wy8E-WZuD5kvCYMODyh9fZ2RConDkQ&amp;token=14818" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 256px; top: -256px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;"><img draggable="false" alt="" role="presentation" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i13025!3i8482!4i256!2m3!1e0!2sm!3i446151790!3m9!2sid!3sID!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!4e0!23i1301875&amp;key=AIzaSyAG1wy8E-WZuD5kvCYMODyh9fZ2RConDkQ&amp;token=538" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 256px; top: 0px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;"><img draggable="false" alt="" role="presentation" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i13025!3i8483!4i256!2m3!1e0!2sm!3i446151670!3m9!2sid!3sID!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!4e0!23i1301875&amp;key=AIzaSyAG1wy8E-WZuD5kvCYMODyh9fZ2RConDkQ&amp;token=35247" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 256px; top: 256px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;"><img draggable="false" alt="" role="presentation" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i13025!3i8484!4i256!2m3!1e0!2sm!3i446151670!3m9!2sid!3sID!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!4e0!23i1301875&amp;key=AIzaSyAG1wy8E-WZuD5kvCYMODyh9fZ2RConDkQ&amp;token=6864" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 0px; top: 256px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;"><img draggable="false" alt="" role="presentation" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i13024!3i8484!4i256!2m3!1e0!2sm!3i446151670!3m9!2sid!3sID!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!4e0!23i1301875&amp;key=AIzaSyAG1wy8E-WZuD5kvCYMODyh9fZ2RConDkQ&amp;token=21144" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: -256px; top: 256px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;"><img draggable="false" alt="" role="presentation" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i13023!3i8484!4i256!2m3!1e0!2sm!3i446151670!3m9!2sid!3sID!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!4e0!23i1301875&amp;key=AIzaSyAG1wy8E-WZuD5kvCYMODyh9fZ2RConDkQ&amp;token=35424" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: -512px; top: 256px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;"><img draggable="false" alt="" role="presentation" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i13022!3i8484!4i256!2m3!1e0!2sm!3i446151790!3m9!2sid!3sID!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!4e0!23i1301875&amp;key=AIzaSyAG1wy8E-WZuD5kvCYMODyh9fZ2RConDkQ&amp;token=117683" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: -512px; top: 0px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;"><img draggable="false" alt="" role="presentation" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i13022!3i8483!4i256!2m3!1e0!2sm!3i446151790!3m9!2sid!3sID!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!4e0!23i1301875&amp;key=AIzaSyAG1wy8E-WZuD5kvCYMODyh9fZ2RConDkQ&amp;token=14995" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: -512px; top: -256px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;"><img draggable="false" alt="" role="presentation" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i13022!3i8482!4i256!2m3!1e0!2sm!3i446151790!3m9!2sid!3sID!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!4e0!23i1301875&amp;key=AIzaSyAG1wy8E-WZuD5kvCYMODyh9fZ2RConDkQ&amp;token=43378" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 512px; top: -256px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;"><img draggable="false" alt="" role="presentation" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i13026!3i8482!4i256!2m3!1e0!2sm!3i446151790!3m9!2sid!3sID!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!4e0!23i1301875&amp;key=AIzaSyAG1wy8E-WZuD5kvCYMODyh9fZ2RConDkQ&amp;token=117329" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 512px; top: 0px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;"><img draggable="false" alt="" role="presentation" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i13026!3i8483!4i256!2m3!1e0!2sm!3i446151790!3m9!2sid!3sID!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!4e0!23i1301875&amp;key=AIzaSyAG1wy8E-WZuD5kvCYMODyh9fZ2RConDkQ&amp;token=88946" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 512px; top: 256px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;"><img draggable="false" alt="" role="presentation" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i13026!3i8484!4i256!2m3!1e0!2sm!3i446151670!3m9!2sid!3sID!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!4e0!23i1301875&amp;key=AIzaSyAG1wy8E-WZuD5kvCYMODyh9fZ2RConDkQ&amp;token=123655" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 256px; top: 512px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;"><img draggable="false" alt="" role="presentation" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i13025!3i8485!4i256!2m3!1e0!2sm!3i446151214!3m9!2sid!3sID!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!4e0!23i1301875&amp;key=AIzaSyAG1wy8E-WZuD5kvCYMODyh9fZ2RConDkQ&amp;token=44214" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 0px; top: 512px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;"><img draggable="false" alt="" role="presentation" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i13024!3i8485!4i256!2m3!1e0!2sm!3i446151214!3m9!2sid!3sID!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!4e0!23i1301875&amp;key=AIzaSyAG1wy8E-WZuD5kvCYMODyh9fZ2RConDkQ&amp;token=58494" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: -256px; top: 512px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;"><img draggable="false" alt="" role="presentation" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i13023!3i8485!4i256!2m3!1e0!2sm!3i446151214!3m9!2sid!3sID!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!4e0!23i1301875&amp;key=AIzaSyAG1wy8E-WZuD5kvCYMODyh9fZ2RConDkQ&amp;token=72774" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 512px; top: 512px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;"><img draggable="false" alt="" role="presentation" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i13026!3i8485!4i256!2m3!1e0!2sm!3i446151214!3m9!2sid!3sID!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!4e0!23i1301875&amp;key=AIzaSyAG1wy8E-WZuD5kvCYMODyh9fZ2RConDkQ&amp;token=29934" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: -512px; top: 512px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;"><img draggable="false" alt="" role="presentation" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i13022!3i8485!4i256!2m3!1e0!2sm!3i446151790!3m9!2sid!3sID!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!4e0!23i1301875&amp;key=AIzaSyAG1wy8E-WZuD5kvCYMODyh9fZ2RConDkQ&amp;token=89300" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div></div></div></div><div class="gm-style-pbc" style="z-index: 2; position: absolute; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; left: 0px; top: 0px; opacity: 0; transition-duration: 0.2s;"><p class="gm-style-pbt"></p></div><div style="z-index: 3; position: absolute; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; left: 0px; top: 0px; touch-action: pan-x pan-y;"><div style="z-index: 4; position: absolute; left: 50%; top: 50%; width: 100%; transform: translate(0px, 0px);"><div style="position: absolute; left: 0px; top: 0px; z-index: 104; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 105; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 106; width: 100%;"><div title="" style="width: 32px; height: 32px; overflow: hidden; position: absolute; opacity: 0; cursor: pointer; touch-action: none; left: -41px; top: -99px; z-index: -67;"><img alt="" src="https://maps.gstatic.com/mapfiles/ms2/micons/red-pushpin.png" draggable="false" style="position: absolute; left: 0px; top: 0px; user-select: none; width: 32px; height: 32px; border: 0px; padding: 0px; margin: 0px; max-width: none; opacity: 1;"></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 107; width: 100%;"><div style="z-index: -202; cursor: pointer; display: none; touch-action: none;"><div style="width: 30px; height: 27px; overflow: hidden; position: absolute;"><img alt="" src="https://maps.gstatic.com/mapfiles/undo_poly.png" draggable="false" style="position: absolute; left: 0px; top: 0px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 90px; height: 27px;"></div></div></div></div></div></div><iframe aria-hidden="true" frameborder="0" style="z-index: -1; position: absolute; width: 100%; height: 100%; top: 0px; left: 0px; border: none;" src="about:blank"></iframe><div style="margin-left: 5px; margin-right: 5px; z-index: 1000000; position: absolute; left: 0px; bottom: 0px;"><a target="_blank" rel="noopener" href="https://maps.google.com/maps?ll=-6.397467,106.18167&amp;z=14&amp;t=m&amp;hl=id&amp;gl=ID&amp;mapclient=apiv3" title="Open this area in Google Maps (opens a new window)" style="position: static; overflow: visible; float: none; display: inline;"><div style="width: 66px; height: 26px; cursor: pointer;"><img alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/google4.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 66px; height: 26px; user-select: none; border: 0px; padding: 0px; margin: 0px;"></div></a></div><div style="background-color: white; padding: 15px 21px; border: 1px solid rgb(171, 171, 171); font-family: Roboto, Arial, sans-serif; color: rgb(34, 34, 34); box-sizing: border-box; box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 16px; z-index: 10000002; display: none; width: 300px; height: 140px; position: absolute; left: 357px; top: 5px;"><div style="padding: 0px 0px 10px; font-size: 16px;">Data Peta</div><div style="font-size: 13px;">Data peta ©2018 Google</div><button draggable="false" title="Close" aria-label="Close" type="button" class="gm-ui-hover-effect" style="background: none; display: block; border: 0px; margin: 0px; padding: 0px; position: absolute; cursor: pointer; user-select: none; top: 0px; right: 0px; width: 37px; height: 37px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224px%22%20height%3D%2224px%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22%23000000%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M19%206.41L17.59%205%2012%2010.59%206.41%205%205%206.41%2010.59%2012%205%2017.59%206.41%2019%2012%2013.41%2017.59%2019%2019%2017.59%2013.41%2012z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M0%200h24v24H0z%22%20fill%3D%22none%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="pointer-events: none; display: block; width: 13px; height: 13px; margin: 12px;"></button></div><div class="gmnoprint" style="z-index: 1000001; position: absolute; right: 221px; bottom: 0px; width: 122px;"><div draggable="false" class="gm-style-cc" style="user-select: none; height: 14px; line-height: 14px;"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><a style="text-decoration: none; cursor: pointer; display: none;">Data Peta</a><span>Data peta ©2018 Google</span></div></div></div><div class="gmnoscreen" style="position: absolute; right: 0px; bottom: 0px;"><div style="font-family: Roboto, Arial, sans-serif; font-size: 11px; color: rgb(68, 68, 68); direction: ltr; text-align: right; background-color: rgb(245, 245, 245);">Data peta ©2018 Google</div></div><div class="gmnoprint gm-style-cc" draggable="false" style="z-index: 1000001; user-select: none; height: 14px; line-height: 14px; position: absolute; right: 123px; bottom: 0px;"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><a href="https://www.google.com/intl/id_ID/help/terms_maps.html" target="_blank" rel="noopener" style="text-decoration: none; cursor: pointer; color: rgb(68, 68, 68);">Syarat Penggunaan</a></div></div><button draggable="false" title="Beralih ke tampilan layar penuh" aria-label="Beralih ke tampilan layar penuh" type="button" class="gm-control-active gm-fullscreen-control" style="background: none rgb(255, 255, 255); border: 0px; margin: 10px; padding: 0px; position: absolute; cursor: pointer; user-select: none; border-radius: 2px; height: 40px; width: 40px; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; overflow: hidden; display: none; top: 0px; right: 0px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218%22%20height%3D%2218%22%20viewBox%3D%220%20018%2018%22%3E%0A%20%20%3Cpath%20fill%3D%22%23666%22%20d%3D%22M0%2C0v2v4h2V2h4V0H2H0z%20M16%2C0h-4v2h4v4h2V2V0H16z%20M16%2C16h-4v2h4h2v-2v-4h-2V16z%20M2%2C12H0v4v2h2h4v-2H2V12z%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="height: 18px; width: 18px; margin: 11px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218%22%20height%3D%2218%22%20viewBox%3D%220%200%2018%2018%22%3E%0A%20%20%3Cpath%20fill%3D%22%23333%22%20d%3D%22M0%2C0v2v4h2V2h4V0H2H0z%20M16%2C0h-4v2h4v4h2V2V0H16z%20M16%2C16h-4v2h4h2v-2v-4h-2V16z%20M2%2C12H0v4v2h2h4v-2H2V12z%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="height: 18px; width: 18px; margin: 11px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218%22%20height%3D%2218%22%20viewBox%3D%220%200%2018%2018%22%3E%0A%20%20%3Cpath%20fill%3D%22%23111%22%20d%3D%22M0%2C0v2v4h2V2h4V0H2H0z%20M16%2C0h-4v2h4v4h2V2V0H16z%20M16%2C16h-4v2h4h2v-2v-4h-2V16z%20M2%2C12H0v4v2h2h4v-2H2V12z%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="height: 18px; width: 18px; margin: 11px;"></button><input id="pac-input" class="controls" type="text" placeholder="Ketikkan Alamat Anda..." autocomplete="off" style="z-index: 0; position: absolute; left: 0px; top: 0px;"><div draggable="false" class="gm-style-cc" style="user-select: none; height: 14px; line-height: 14px; z-index: 0; position: absolute; bottom: 14px; right: 0px;"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: none; padding-bottom: 0px;"></div></div><div draggable="false" class="gm-style-cc" style="user-select: none; height: 14px; line-height: 14px; position: absolute; right: 0px; bottom: 0px;"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><a target="_blank" rel="noopener" title="Laporkan kesalahan dalam peta jalan atau citra ke Google" href="https://www.google.com/maps/@-6.3974665,106.1816697,14z/data=!10m1!1e1!12b1?source=apiv3&amp;rapsrc=apiv3" style="font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); text-decoration: none; position: relative;">Laporkan kesalahan peta</a></div></div><div class="gmnoprint gm-bundled-control gm-bundled-control-on-bottom" draggable="false" controlwidth="0" controlheight="0" style="margin: 10px; user-select: none; position: absolute; bottom: 14px; right: 0px; display: none;"><div class="gmnoprint" style="display: none; position: absolute;"><div draggable="false" style="user-select: none; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; border-radius: 2px; cursor: pointer; background-color: rgb(255, 255, 255);"><button draggable="false" title="Perbesar" aria-label="Perbesar" type="button" class="gm-control-active" style="background: none; display: block; border: 0px; margin: 0px; padding: 0px; position: relative; cursor: pointer; user-select: none; overflow: hidden;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218%22%20height%3D%2218%22%20viewBox%3D%220%200%2018%2018%22%3E%0A%20%20%3Cpolygon%20fill%3D%22%23666%22%20points%3D%2218%2C7%2011%2C7%2011%2C0%207%2C0%207%2C7%200%2C7%200%2C11%207%2C11%207%2C18%2011%2C18%2011%2C11%2018%2C11%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="height: 18px; width: 18px; margin: 9px 11px 13px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218%22%20height%3D%2218%22%20viewBox%3D%220%200%2018%2018%22%3E%0A%20%20%3Cpolygon%20fill%3D%22%23333%22%20points%3D%2218%2C7%2011%2C7%2011%2C0%207%2C0%207%2C7%200%2C7%200%2C11%207%2C11%207%2C18%2011%2C18%2011%2C11%2018%2C11%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="height: 18px; width: 18px; margin: 9px 11px 13px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218%22%20height%3D%2218%22%20viewBox%3D%220%200%2018%2018%22%3E%0A%20%20%3Cpolygon%20fill%3D%22%23111%22%20points%3D%2218%2C7%2011%2C7%2011%2C0%207%2C0%207%2C7%200%2C7%200%2C11%207%2C11%207%2C18%2011%2C18%2011%2C11%2018%2C11%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="height: 18px; width: 18px; margin: 9px 11px 13px;"></button><div style="position: relative; overflow: hidden; width: 30px; height: 1px; margin: 0px 5px; background-color: rgb(230, 230, 230);"></div><button draggable="false" title="Perkecil" aria-label="Perkecil" type="button" class="gm-control-active" style="background: none; display: block; border: 0px; margin: 0px; padding: 0px; position: relative; cursor: pointer; user-select: none; overflow: hidden;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218%22%20height%3D%2218%22%20viewBox%3D%220%200%2018%2018%22%3E%0A%20%20%3Cpath%20fill%3D%22%23666%22%20d%3D%22M0%2C7h18v4H0V7z%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="height: 18px; width: 18px; margin: 13px 11px 9px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218%22%20height%3D%2218%22%20viewBox%3D%220%200%2018%2018%22%3E%0A%20%20%3Cpath%20fill%3D%22%23333%22%20d%3D%22M0%2C7h18v4H0V7z%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="height: 18px; width: 18px; margin: 13px 11px 9px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218%22%20height%3D%2218%22%20viewBox%3D%220%200%2018%2018%22%3E%0A%20%20%3Cpath%20fill%3D%22%23111%22%20d%3D%22M0%2C7h18v4H0V7z%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="height: 18px; width: 18px; margin: 13px 11px 9px;"></button></div></div><div class="gm-svpc" controlwidth="40" controlheight="40" style="background-color: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; border-radius: 2px; width: 40px; height: 40px; cursor: url(&quot;https://maps.gstatic.com/mapfiles/openhand_8_8.cur&quot;), default; touch-action: none; position: absolute; left: 0px; top: 0px; display: none;"><div style="position: absolute; left: 50%; top: 50%;"></div><div style="position: absolute; left: 50%; top: 50%;"></div><div style="position: absolute; left: 50%; top: 50%;"></div></div><div class="gmnoprint" controlwidth="40" controlheight="40" style="display: none; position: absolute;"><div style="width: 40px; height: 40px;"><button draggable="false" title="Rotate map 90 degrees" aria-label="Rotate map 90 degrees" type="button" class="gm-control-active" style="background: none rgb(255, 255, 255); display: none; border: 0px; margin: 0px 0px 32px; padding: 0px; position: relative; cursor: pointer; user-select: none; width: 40px; height: 40px; top: 0px; left: 0px; overflow: hidden; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; border-radius: 2px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2222%22%20viewBox%3D%220%200%2024%2022%22%3E%0A%20%20%3Cpath%20fill%3D%22%23666%22%20fill-rule%3D%22evenodd%22%20d%3D%22M20%2010c0-5.52-4.48-10-10-10s-10%204.48-10%2010v5h5v-5c0-2.76%202.24-5%205-5s5%202.24%205%205v5h-4l6.5%207%206.5-7h-4v-5z%22%20clip-rule%3D%22evenodd%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="height: 28px; width: 28px; margin: 6px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2222%22%20viewBox%3D%220%200%2024%2022%22%3E%0A%20%20%3Cpath%20fill%3D%22%23333%22%20fill-rule%3D%22evenodd%22%20d%3D%22M20%2010c0-5.52-4.48-10-10-10s-10%204.48-10%2010v5h5v-5c0-2.76%202.24-5%205-5s5%202.24%205%205v5h-4l6.5%207%206.5-7h-4v-5z%22%20clip-rule%3D%22evenodd%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="height: 28px; width: 28px; margin: 6px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2222%22%20viewBox%3D%220%200%2024%2022%22%3E%0A%20%20%3Cpath%20fill%3D%22%23111%22%20fill-rule%3D%22evenodd%22%20d%3D%22M20%2010c0-5.52-4.48-10-10-10s-10%204.48-10%2010v5h5v-5c0-2.76%202.24-5%205-5s5%202.24%205%205v5h-4l6.5%207%206.5-7h-4v-5z%22%20clip-rule%3D%22evenodd%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="height: 28px; width: 28px; margin: 6px;"></button><button draggable="false" title="Tilt map" aria-label="Tilt map" type="button" class="gm-tilt gm-control-active" style="background: none rgb(255, 255, 255); display: block; border: 0px; margin: 0px; padding: 0px; position: relative; cursor: pointer; user-select: none; width: 40px; height: 40px; top: 0px; left: 0px; overflow: hidden; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; border-radius: 2px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2018%2016%22%3E%0A%20%20%3Cpath%20fill%3D%22%23666%22%20d%3D%22M0%2C16h8V9H0V16z%20M10%2C16h8V9h-8V16z%20M0%2C7h8V0H0V7z%20M10%2C0v7h8V0H10z%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="width: 18px; height: 16px; margin: 12px 11px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2018%2016%22%3E%0A%20%20%3Cpath%20fill%3D%22%23333%22%20d%3D%22M0%2C16h8V9H0V16z%20M10%2C16h8V9h-8V16z%20M0%2C7h8V0H0V7z%20M10%2C0v7h8V0H10z%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="width: 18px; height: 16px; margin: 12px 11px;"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2018%2016%22%3E%0A%20%20%3Cpath%20fill%3D%22%23111%22%20d%3D%22M0%2C16h8V9H0V16z%20M10%2C16h8V9h-8V16z%20M0%2C7h8V0H0V7z%20M10%2C0v7h8V0H10z%22%2F%3E%0A%3C%2Fsvg%3E%0A" style="width: 18px; height: 16px; margin: 12px 11px;"></button></div></div></div><div class="gmnoprint" style="margin: 10px; z-index: 0; position: absolute; cursor: pointer; display: none; left: 0px; top: 0px;"><div class="gm-style-mtc" style="float: left; position: relative;"><div role="button" tabindex="0" title="Tunjukkan peta jalan" aria-label="Tunjukkan peta jalan" aria-pressed="true" draggable="false" style="direction: ltr; overflow: hidden; text-align: center; height: 40px; display: table-cell; vertical-align: middle; position: relative; color: rgb(0, 0, 0); font-family: Roboto, Arial, sans-serif; user-select: none; font-size: 18px; background-color: rgb(255, 255, 255); padding: 0px 17px; border-bottom-left-radius: 2px; border-top-left-radius: 2px; background-clip: padding-box; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; min-width: 37px; font-weight: 500;">Peta</div><div style="background-color: white; z-index: -1; padding: 2px; border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; position: absolute; left: 0px; top: 40px; text-align: left; display: none;"><div draggable="false" title="Tunjukkan peta jalan dengan medan" style="color: rgb(0, 0, 0); font-family: Roboto, Arial, sans-serif; user-select: none; font-size: 18px; background-color: rgb(255, 255, 255); padding: 6px 8px 6px 6px; direction: ltr; text-align: left; white-space: nowrap;"><span role="checkbox" style="box-sizing: border-box; position: relative; line-height: 0; font-size: 0px; margin: 0px 5px 0px 0px; display: inline-block; background-color: rgb(255, 255, 255); border: 1px solid rgb(198, 198, 198); border-radius: 1px; width: 13px; height: 13px; vertical-align: middle;"><div style="position: absolute; left: 1px; top: -2px; width: 13px; height: 11px; overflow: hidden; display: none;"><img alt="" src="https://maps.gstatic.com/mapfiles/mv/imgs8.png" draggable="false" style="position: absolute; left: -52px; top: -44px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 68px; height: 67px;"></div></span><label style="vertical-align: middle; cursor: pointer;">Medan</label></div></div></div><div class="gm-style-mtc" style="float: left; position: relative;"><div role="button" tabindex="0" title="Tunjukkan citra satelit" aria-label="Tunjukkan citra satelit" aria-pressed="false" draggable="false" style="direction: ltr; overflow: hidden; text-align: center; height: 40px; display: table-cell; vertical-align: middle; position: relative; color: rgb(86, 86, 86); font-family: Roboto, Arial, sans-serif; user-select: none; font-size: 18px; background-color: rgb(255, 255, 255); padding: 0px 17px; border-bottom-right-radius: 2px; border-top-right-radius: 2px; background-clip: padding-box; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; min-width: 52px; border-left: 0px;">Satelit</div><div style="background-color: white; z-index: -1; padding: 2px; border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; position: absolute; right: 0px; top: 40px; text-align: left; display: none;"><div draggable="false" title="Tunjukkan citra dengan nama jalan" style="color: rgb(0, 0, 0); font-family: Roboto, Arial, sans-serif; user-select: none; font-size: 18px; background-color: rgb(255, 255, 255); padding: 6px 8px 6px 6px; direction: ltr; text-align: left; white-space: nowrap;"><span role="checkbox" style="box-sizing: border-box; position: relative; line-height: 0; font-size: 0px; margin: 0px 5px 0px 0px; display: inline-block; background-color: rgb(255, 255, 255); border: 1px solid rgb(198, 198, 198); border-radius: 1px; width: 13px; height: 13px; vertical-align: middle;"><div style="position: absolute; left: 1px; top: -2px; width: 13px; height: 11px; overflow: hidden;"><img alt="" src="https://maps.gstatic.com/mapfiles/mv/imgs8.png" draggable="false" style="position: absolute; left: -52px; top: -44px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 68px; height: 67px;"></div></span><label style="vertical-align: middle; cursor: pointer;">Label</label></div></div></div></div></div></div></div>
+      </div>
+
+			<div class="modal fade col-lg-6 col-lg-offset-3" id="detail">
+		    <div class="modal-content">
+		      <div class="row">
+		        <div class="col-lg-12">
+		          <div class="modal-body">
+		            <h2 id="detailNama"></h2>
+								<h4 id="detailAlamat"></h4>
+								<br>
+								<div id="myCarousel" class="carousel slide" data-ride="carousel">
+									<div id="gallery" class="carousel-inner">
+										<div class="item active">
+										</div>
+									</div>
+									<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+										<span class="glyphicon glyphicon-chevron-left"></span>
+										<span class="sr-only">Previous</span>
+									</a>
+									<a class="right carousel-control" href="#myCarousel" data-slide="next">
+										<span class="glyphicon glyphicon-chevron-right"></span>
+										<span class="sr-only">Next</span>
+									</a>
+								</div>
+								<br>
+								<div id="detailText" class="text-left">
+								</div>
+								<br>
+		            <a data-dismiss="modal" class="btn btn-warning pull-right">Close</a>
+								<h3>&nbsp;</h3>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+		  </div>
+
+    </div>
+	</div>
+
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAG1wy8E-WZuD5kvCYMODyh9fZ2RConDkQ&amp;region=ID&amp;language=id&amp;libraries=places&amp;callback=getLoc" async="" defer=""></script>
+	<script type="text/javascript">
+		var map, geocoder, service, circle, myLatlng, radius=1000, status, directionsDisplay, directionsService, myLocation, infoHere;
+		var markers = [], nearby = [], keyword = [], nearest = [];
+		var homeIcon = 'https://maps.gstatic.com/mapfiles/ms2/micons/red-pushpin.png';
+		var foundIcon = 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png';
+
+		$(document).ready(function(){
+			radius = $('#ex1').val()*1000;
+			setKeyword();
+		});
+
+		//ini slider buat radius
+		$('#ex1').slider({
+			formatter: function(value) {
+				radius = value*1000;
+				$('#radNum').html(value+'Km');
+				return value+" Km";
+			}
+		});
+		$('#ex1').change(function(){
+			runQuery();
+		});
+
+		//radio buat jenjang
+		$('input[name=jenjang]').change(function(){
+			setKeyword();
+			runQuery();
+		});
+
+		function setKeyword(){
+			keyword = $('input[name=jenjang]:checked').val();
+		}
+
+		//buat ngambil lokasi pake browser
+		function getLoc(){
+			if(navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(myPos,errPos);
+		  }
+		}
+		function myPos(pos){
+	    myLatlng = {lat: pos.coords.latitude, lng: pos.coords.longitude};
+			initMap();
+		}
+		function errPos(err){
+			console.log(err);
+			switch(err.code) {
+				default:
+					myLatlng = {lat: -6.597853, lng: 106.797682};
+					initMap();
+		      break;
+		  }
+		}
+
+		function initMap() {
+			//inisialisasi map awal dan nilai awal variabel
+			map = new google.maps.Map(document.getElementById('myMap'), {
+				center: myLatlng,
+				zoom: 15,
+				clickableIcons: false,
+				fullscreenControl: false,
+				mapTypeId: 'roadmap'
+			});
+
+			infoHere = new google.maps.InfoWindow();
+			circle = new google.maps.Circle;
+			geocoder = new google.maps.Geocoder;
+			directionsService = new google.maps.DirectionsService;
+	    directionsDisplay = new google.maps.DirectionsRenderer({
+				suppressMarkers: true,
+				preserveViewport: true,
+				polylineOptions: {
+	      	strokeColor: "red"
+	    	}
+			});
+			service = new google.maps.places.PlacesService(map);
+			var input = document.getElementById('pac-input');
+		  var searchBox = new google.maps.places.SearchBox(input);
+			map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+			//nambahin listener buat action di map nya
+			google.maps.event.addListener(map, 'click', function (event) {
+				markers.forEach(function(marker) {
+					marker.setMap(null);
+				});
+				markers = [];
+				myLatlng = event.latLng;
+				runQuery();
+			});
+
+			map.addListener('bounds_changed', function() {
+				 searchBox.setBounds(map.getBounds());
+			});
+
+	    searchBox.addListener('places_changed', function() {
+	      var places = searchBox.getPlaces();
+	      if (places.length == 0) {
+	        return;
+	      }
+
+	      var bounds = new google.maps.LatLngBounds();
+	      places.forEach(function(place) {
+					(place.geometry.viewport)?bounds.union(place.geometry.viewport):bounds.extend(place.geometry.location);
+	      });
+	      map.fitBounds(bounds);
+				map.setZoom(15);
+	    });
+		}
+
+		function runQuery() {
+			directionsDisplay.setMap(null);
+			infoHere.close();
+
+			geocoder.geocode({'location': myLatlng}, function(results, status) {
+				if(status === 'OK'){
+					if(results[0]){
+						map.setZoom(map.getZoom());
+
+						var marker = new google.maps.Marker({
+							icon: homeIcon,
+							position: myLatlng,
+							map: map
+						});
+
+						google.maps.event.addListener(marker,'click', (function(marker){
+								return function() {
+									directionsDisplay.setMap(null);
+									infoHere.close();
+
+									nearby.forEach(function(marker) {
+										marker.setMap(null);
+									});
+									nearby.forEach(function(marker) {
+										marker.setMap(map);
+									});
+								};
+						})(marker));
+
+						markers.push(marker);
+						service.getDetails({ placeId: results[0].place_id }, function(place, status) {
+							if(status === google.maps.places.PlacesServiceStatus.OK) {
+								$('#alamatRumah').html('<b>'+place.name);
+								$('#alamatJalan').html(place.formatted_address);
+								myLocation = place;
+
+								circle.setMap(null);
+								circle = new google.maps.Circle({
+									map: map,
+									center: myLatlng,
+									radius: radius,
+									strokeColor: '#07A8BD',
+									strokeOpacity: 0.8,
+									strokeWeight: 2,
+									fillColor: '#07A8BD',
+									fillOpacity: 0.1,
+									clickable: false
+								});
+
+								service.nearbySearch({
+									location: myLatlng,
+									radius: radius-2000,
+									keyword: keyword,
+									type: ['school','sekolah']
+								}, callback);
+							}
+						});
+					}
+				}
+			});
+		}
+
+		function callback(results, status) {
+			nearby.forEach(function(marker) {
+				marker.setMap(null);
+			});
+			nearby = [];
+			nearest = [];
+
+			$('#rekomendasi').empty();
+
+			if(status == google.maps.places.PlacesServiceStatus.OK) {
+				for(var i = 0; i < results.length; i++) {
+					var infowindow = new google.maps.InfoWindow();
+					var marker = new google.maps.Marker({
+						icon: foundIcon,
+						title: results[i].name,
+						map: map,
+						position: results[i].geometry.location
+					});
+
+					var content = results[i].name;
+
+					google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){
+			        return function() {
+			           infowindow.setContent(content);
+			           infowindow.open(map,marker);
+			        };
+			    })(marker,content,infowindow));
+
+					nearby.push(marker);
+
+					results[i].distance = euclidGeom(myLatlng,results[i].geometry.location);
+					nearest.push(results[i]);
+		    }
+		  }
+
+			nearest.sort(function(a, b){return a.distance-b.distance});
+			$.each( nearest, function( key, value ) {
+			  $('#rekomendasi').append("<li style='width:100%; vertical-align: middle;'><a id='"+key+"' onClick='liClick(this.id);' class='col-md-10'>"+value.name+"</a><i id='"+key+"' style='margin:0;' class='btn btn-default fa fa-external-link fa-lg col-md-2' onClick='openDetail(this.id)'></i></li>");
+			});
+
+		}
+
+		function euclidGeom(src,dest) {
+			return Math.sqrt((Math.pow(src.lat()-dest.lat(),2))+Math.pow(src.lng()-dest.lng(),2));
+		}
+
+		function liClick(val) {
+			var markHere;
+
+			nearby.forEach(function(marker) {
+				if(marker.position == nearest[val].geometry.location){
+					marker.setMap(map);
+					markHere = marker;
+				} else marker.setMap(null);
+			});
+
+			directionsDisplay.setMap(map);
+
+			directionsService.route({
+				origin: myLocation.geometry.location,
+	      destination: nearest[val].geometry.location,
+	      travelMode: 'DRIVING'
+			},function(response, status) {
+			    if (status === 'OK') {
+						infoHere.close();
+
+						var content = '<center><b>'+nearest[val].name+'</b></center><hr style="padding:2px; margin:10px;"></hr>'+
+						'Estimasi Perjalanan Darat<br>'+
+						'Jarak Tempuh: '+response.routes[0].legs[0].distance.value/1000 +" Km<br>"+
+						'Waktu Tempuh: '+response.routes[0].legs[0].duration.text;
+
+						infoHere.setContent(content);
+
+						directionsDisplay.setDirections(response);
+						infoHere.open(map,markHere);
+			    } else {
+			      window.alert('Directions request failed due to ' + status);
+			    }
+				});
+		}
+
+		function openDetail(val) {
+			$('#detailNama').html(nearest[val].name);
+			$('#detailAlamat').html(nearest[val].vicinity);
+			$('#detailText').empty();
+			$('#gallery').empty();
+			var it = 0;
+
+			var content = nearest[val].distance;
+
+			$('#detailText').html();
+
+			service.getDetails({ placeId: nearest[val].place_id }, function(place, status) {
+				if(status === google.maps.places.PlacesServiceStatus.OK) {
+					if(!place.photos){
+						$('#gallery').append('<div class="item active"><center><img src= "https://mosaikweb.com/wp-content/plugins/lightbox/images/No-image-found.jpg" ></center></div>');
+
+						return;
+					}
+
+					place.photos.forEach(function(photo) {
+						var photo = photo.getUrl({'maxHeight': 300});
+
+						if(it==0) $('#gallery').append('<div class="item active"><center><img src='+photo+'></center></div>');
+						else $('#gallery').append('<div class="item text-center"><center><img src='+photo+'></center></div>');
+
+						it++;
+					});
+				}
+			});
+
+			$('#detail').modal('show');
+		}
+	</script>
+
+
+<div class="pac-container pac-logo" style="display: none; width: 298px; position: absolute; left: 535px; top: 42px;"></div></body></html>

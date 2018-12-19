@@ -2,7 +2,7 @@
 
 @section('content')
 <input id="pac-input" style="width: 300px; height: 40px" type="text" placeholder="Search Box">
-<div id="map" style="width: 1500px; height: 500px"></div></align> 
+<div id="map" style="width: 1500px; height: 600px"></div></align> 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJfQgQL9MaM83aHUs5vxwi6O6JeVoU63Y&libraries=places&callback=initAutocomplete" async defer></script>
 <script>
     var map;
@@ -36,7 +36,7 @@
     function createMap(myLatlng){
         map = new google.maps.Map(document.getElementById('map'), {
             center: myLatlng,
-            zoom: 13,
+            zoom: 11,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         });
         markerPin = new google.maps.Marker({
@@ -47,7 +47,7 @@
         circle = new google.maps.Circle({
 			map: map,
 			center: myLatlng,
-			radius: 4000,
+			radius: 20000,
 			strokeColor: '#07A8BD',
 			strokeOpacity: 0.8,
 			strokeWeight: 2,
